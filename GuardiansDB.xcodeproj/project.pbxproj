@@ -13,6 +13,7 @@
 		CEB93EA21E8FFDB100681E33 /* GuardiansDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEB93EA01E8FFDB100681E33 /* GuardiansDB.xcdatamodeld */; };
 		CEB93EA41E8FFDB100681E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB93EA31E8FFDB100681E33 /* Assets.xcassets */; };
 		CEB93EA71E8FFDB100681E33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB93EA51E8FFDB100681E33 /* LaunchScreen.storyboard */; };
+		CEB93EB01E9003B600681E33 /* Toon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB93EAF1E9003B600681E33 /* Toon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CEB93EA31E8FFDB100681E33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEB93EA61E8FFDB100681E33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEB93EA81E8FFDB100681E33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEB93EAF1E9003B600681E33 /* Toon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		CEB93E981E8FFDB100681E33 /* GuardiansDB */ = {
 			isa = PBXGroup;
 			children = (
+				CEB93EAE1E90038B00681E33 /* Model */,
 				CEB93E991E8FFDB100681E33 /* AppDelegate.swift */,
 				CEB93E9B1E8FFDB100681E33 /* ViewController.swift */,
 				CEB93E9D1E8FFDB100681E33 /* Main.storyboard */,
@@ -65,6 +68,14 @@
 				CEB93EA01E8FFDB100681E33 /* GuardiansDB.xcdatamodeld */,
 			);
 			path = GuardiansDB;
+			sourceTree = "<group>";
+		};
+		CEB93EAE1E90038B00681E33 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEB93EAF1E9003B600681E33 /* Toon.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEB93E9C1E8FFDB100681E33 /* ViewController.swift in Sources */,
+				CEB93EB01E9003B600681E33 /* Toon.swift in Sources */,
 				CEB93EA21E8FFDB100681E33 /* GuardiansDB.xcdatamodeld in Sources */,
 				CEB93E9A1E8FFDB100681E33 /* AppDelegate.swift in Sources */,
 			);
