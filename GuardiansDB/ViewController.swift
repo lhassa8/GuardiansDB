@@ -37,9 +37,7 @@ class ViewController: UIViewController {
                         let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                         //var tempTableData = [Cell]()
                         //print(jsonResult)
-                        if let code = jsonResult["code"] as! Int! {
-                            print("the code: \(code)")
-                        }
+                        
                         if let data = jsonResult["data"] as? NSDictionary! {
                             //var dataValue = data["data"]["count"] as? String!
                             //print("the data \(data)")
@@ -49,11 +47,25 @@ class ViewController: UIViewController {
                                 for index in 0...results.count-1 {
                                     let id = results[index]["id"] as! Int!
                                     let name = results[index]["name"] as! String!
+                                    
+                                    
+                                    
                                     //print("the ID is: \(String(describing: results[0]["id"]))")
                                     //print("the name is: \(results[0]["name"]))")
                                     let newToon = Toon(name: name!, id: id!)
-                                    print("Adding: \(newToon.name), with id: \(newToon.id)")
-                                
+                                    //print("Adding: \(newToon.name), with id: \(newToon.id)")
+                                    if let comics = results[index]["comics"] as! NSDictionary? {
+                                        if let items = comics["items"] as! [NSDictionary]? {
+                                            //print ("the items: \(items)")
+                                            for item in items {
+                                                //print(item["name"])
+                                                newToon.stories.append(item["name"] as! String)
+                                            }
+                                        }
+                                    }
+                                    print(newToon.name)
+                                    print(newToon.id)
+                                    print(newToon.stories)
                                     self.Toons.append(newToon)
                                     
                                 }

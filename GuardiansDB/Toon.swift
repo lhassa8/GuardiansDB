@@ -11,6 +11,7 @@ import Foundation
 class Toon {
     private var _name: String!
     private var _id: Int!
+    var stories = [String]()
     
     var name: String {
         return _name
@@ -23,6 +24,7 @@ class Toon {
     init(name: String, id: Int) {
         self._name = name
         self._id = id
-        
     }
+    
+    
 }
