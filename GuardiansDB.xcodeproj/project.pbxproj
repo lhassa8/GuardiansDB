@@ -15,6 +15,7 @@
 		CEB93EA71E8FFDB100681E33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB93EA51E8FFDB100681E33 /* LaunchScreen.storyboard */; };
 		CEB93EB01E9003B600681E33 /* Toon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB93EAF1E9003B600681E33 /* Toon.swift */; };
 		CEB93EB31E90628300681E33 /* ToonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB93EB21E90628300681E33 /* ToonCollectionViewCell.swift */; };
+		CEB93EB51E9182C200681E33 /* Guardians.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEB93EB41E9182C200681E33 /* Guardians.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CEB93EA81E8FFDB100681E33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEB93EAF1E9003B600681E33 /* Toon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toon.swift; sourceTree = "<group>"; };
 		CEB93EB21E90628300681E33 /* ToonCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToonCollectionViewCell.swift; sourceTree = "<group>"; };
+		CEB93EB41E9182C200681E33 /* Guardians.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Guardians.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				CEB93E9B1E8FFDB100681E33 /* ViewController.swift */,
 				CEB93E9D1E8FFDB100681E33 /* Main.storyboard */,
 				CEB93EA31E8FFDB100681E33 /* Assets.xcassets */,
+				CEB93EB41E9182C200681E33 /* Guardians.ttf */,
 				CEB93EA51E8FFDB100681E33 /* LaunchScreen.storyboard */,
 				CEB93EA81E8FFDB100681E33 /* Info.plist */,
 				CEB93EA01E8FFDB100681E33 /* GuardiansDB.xcdatamodeld */,
@@ -152,6 +155,7 @@
 				CEB93EA71E8FFDB100681E33 /* LaunchScreen.storyboard in Resources */,
 				CEB93EA41E8FFDB100681E33 /* Assets.xcassets in Resources */,
 				CEB93E9F1E8FFDB100681E33 /* Main.storyboard in Resources */,
+				CEB93EB51E9182C200681E33 /* Guardians.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

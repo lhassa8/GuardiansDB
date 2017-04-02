@@ -16,7 +16,7 @@ class ToonCollectionViewCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = 10
         
     }
 

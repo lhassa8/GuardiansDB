@@ -9,6 +9,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Guardians.ttf">
+            <string>Guardians</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -24,9 +29,23 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyK-zU-iz0">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guardian Universe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLq-AU-Xhe">
+                                        <rect key="frame" x="52" y="26" width="270" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="7Sh-Q2-BWq"/>
+                                            <constraint firstAttribute="width" constant="270" id="Nj3-TI-UEB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Guardians" family="Guardians" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.95288842916488647" green="0.039932660758495331" blue="0.04143068939447403" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="Vx6-g6-1FM"/>
+                                    <constraint firstItem="XLq-AU-Xhe" firstAttribute="centerX" secondItem="lyK-zU-iz0" secondAttribute="centerX" id="hiS-y0-1Pw"/>
+                                    <constraint firstAttribute="bottom" secondItem="XLq-AU-Xhe" secondAttribute="bottom" constant="8" id="myB-kH-DQ5"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QHM-yD-6vR">
@@ -38,7 +57,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="02v-9o-fSa">
-                                <rect key="frame" x="16" y="119" width="343" height="528"/>
+                                <rect key="frame" x="21" y="119" width="333" height="528"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SVZ-NI-vOw">
                                     <size key="itemSize" width="110" height="132"/>
@@ -95,7 +114,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QHM-yD-6vR" secondAttribute="bottom" id="7LK-71-A4p"/>
                             <constraint firstItem="ATb-Mh-h8Q" firstAttribute="top" secondItem="lyK-zU-iz0" secondAttribute="bottom" id="8cK-3K-a4K"/>
                             <constraint firstItem="lyK-zU-iz0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Dpg-yc-Gb7"/>
-                            <constraint firstItem="02v-9o-fSa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="HAf-jb-fgT"/>
+                            <constraint firstItem="02v-9o-fSa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="HAf-jb-fgT"/>
                             <constraint firstItem="02v-9o-fSa" firstAttribute="top" secondItem="ATb-Mh-h8Q" secondAttribute="bottom" constant="20" id="J89-qf-Imp"/>
                             <constraint firstAttribute="trailing" secondItem="lyK-zU-iz0" secondAttribute="trailing" id="dTi-sh-bym"/>
                             <constraint firstItem="QHM-yD-6vR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kil-yF-i9o"/>
@@ -105,7 +124,7 @@
                             <constraint firstAttribute="trailing" secondItem="QHM-yD-6vR" secondAttribute="trailing" id="roK-tm-trT"/>
                             <constraint firstItem="ATb-Mh-h8Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="txM-Vg-SvF"/>
                             <constraint firstItem="QHM-yD-6vR" firstAttribute="top" secondItem="lyK-zU-iz0" secondAttribute="bottom" id="wEZ-Pt-FjU"/>
-                            <constraint firstItem="02v-9o-fSa" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="xOE-MS-M5I"/>
+                            <constraint firstItem="02v-9o-fSa" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="-5" id="xOE-MS-M5I"/>
                         </constraints>
                     </view>
                     <connections>
