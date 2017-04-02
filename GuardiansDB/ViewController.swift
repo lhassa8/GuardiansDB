@@ -8,13 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var collection: UICollectionView!
     var Toons: [Toon] = []
+    var defaultToon = Toon(name: "Iron Man", id: 1009386)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        collection.delegate = self
+        collection.dataSource = self
+        Toons.append(defaultToon)
         fetchAPIData()
         
     }
@@ -26,7 +31,7 @@ class ViewController: UIViewController {
             if error != nil {
                 print(error as Any)
             } else {
-                
+                var tempToons = [Toon]()
                 if let urlContent = data {
                     //process JSON here
                     do {
@@ -66,7 +71,8 @@ class ViewController: UIViewController {
                                     print(newToon.name)
                                     print(newToon.id)
                                     print(newToon.stories)
-                                    self.Toons.append(newToon)
+                                    tempToons.append(newToon)
+                                    //self.Toons.append(newToon)
                                     
                                 }
                                 
@@ -76,54 +82,12 @@ class ViewController: UIViewController {
                             
                         }
                         
-                        /*
-                        if let allArticles = jsonResult["articles"] as? [NSDictionary]{
-                            for i in 0...allArticles.count-1 {
-                                
-                                title = allArticles[i]["title"] as! String!
-                                url =  allArticles[i]["url"] as! String!
-                                //pubDate = allArticles[i]["publishedAt"] as! String!
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-                                
-                                
-                                //let tempCell = Cell(title: title, url: url)
-                                //tempTableData.append(tempCell)
-                                //print("row: \(i) is \(tempTableData[i]) \n\n\n")
-                                //save new data
-                                let context = self.fetchedResultsController.managedObjectContext
-                                let newEvent = Event(context: context)
-                                
-                                // If appropriate, configure the new managed object.
-                                newEvent.title = title
-                                newEvent.url = url
-                                // newEvent.timestamp = dateFormatter.date(from: pubDate) as NSDate? not working
-                                newEvent.timestamp = Date() as NSDate
-                                print("PubDate: \(pubDate)")
-                                print(newEvent.timestamp?.description)
-                                print(newEvent)
-                                
-                                // Save the context.
-                                do {
-                                    try context.save()
-                                } catch {
-                                    // Replace this implementation with code to handle the error appropriately.
-                                    // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                                    let nserror = error as NSError
-                                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-                                }
-                                
-                            }
-                            
-                            self.tableView.reloadData()
-                            
-                        }
-                        */
+
  
-                        //DispatchQueue.main.sync(execute: {
-                        //    self.tableData = tempTableData
-                        //print(self.tableData)
-                        //})
+                        DispatchQueue.main.sync(execute: {
+                            self.Toons = tempToons
+                            self.collection.reloadData()
+                        })
                         
                         
                     } catch {
@@ -135,6 +99,47 @@ class ViewController: UIViewController {
         task.resume()
     }
 
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ToonCell", for: indexPath) as? ToonCollectionViewCell {
+            print(indexPath.row)
+            
+            var toon = defaultToon
+            if indexPath.row  < Toons.count {
+                let toonName = Toons[indexPath.row].name
+                let toonId = Toons[indexPath.row].id
+                toon = Toon(name: toonName, id: toonId)
+                
+            }
+            
+            cell.configureCell(toon: toon)
+            return cell
+            
+        } else {
+            
+            return UICollectionViewCell()
+            
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 22
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: 100, height: 132)
+        
+    }
 }
 
