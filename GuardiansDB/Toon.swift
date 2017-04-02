@@ -26,5 +26,4 @@ class Toon {
         self._id = id
     }
     
-    
 }

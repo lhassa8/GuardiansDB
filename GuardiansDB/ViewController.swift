@@ -8,18 +8,24 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate  {
 
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     var Toons: [Toon] = []
     var defaultToon = Toon(name: "Iron Man", id: 1009386)
-    
+    var inSearchMode = false
+    var filteredToons: [Toon] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collection.delegate = self
         collection.dataSource = self
+        searchBar.delegate = self
         Toons.append(defaultToon)
+        searchBar.isTranslucent = true
+        searchBar.keyboardAppearance = .dark
+        searchBar.returnKeyType = .done  
         fetchAPIData()
         
     }
@@ -36,34 +42,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     //process JSON here
                     do {
                         
-                        //var title = "not avail"
-                        //var url = "http://www.economist.com"
-                        //var pubDate = "2017-03-24T17:40:14Z"
                         let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                        //var tempTableData = [Cell]()
-                        //print(jsonResult)
-                        
+
                         if let data = jsonResult["data"] as? NSDictionary! {
-                            //var dataValue = data["data"]["count"] as? String!
-                            //print("the data \(data)")
                             
                             if let results = data["results"] as! [NSDictionary]! {
                                 
                                 for index in 0...results.count-1 {
                                     let id = results[index]["id"] as! Int!
                                     let name = results[index]["name"] as! String!
-                                    
-                                    
-                                    
-                                    //print("the ID is: \(String(describing: results[0]["id"]))")
-                                    //print("the name is: \(results[0]["name"]))")
+
                                     let newToon = Toon(name: name!, id: id!)
-                                    //print("Adding: \(newToon.name), with id: \(newToon.id)")
+
                                     if let comics = results[index]["comics"] as! NSDictionary? {
                                         if let items = comics["items"] as! [NSDictionary]? {
-                                            //print ("the items: \(items)")
+                                            
                                             for item in items {
-                                                //print(item["name"])
+                                                
                                                 newToon.stories.append(item["name"] as! String)
                                             }
                                         }
@@ -72,18 +67,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                                     print(newToon.id)
                                     print(newToon.stories)
                                     tempToons.append(newToon)
-                                    //self.Toons.append(newToon)
                                     
                                 }
-                                
-                                
-                                
                             }
-                            
                         }
                         
-
- 
                         DispatchQueue.main.sync(execute: {
                             self.Toons = tempToons
                             self.collection.reloadData()
@@ -106,11 +94,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             print(indexPath.row)
             
             var toon = defaultToon
-            if indexPath.row  < Toons.count {
-                let toonName = Toons[indexPath.row].name
-                let toonId = Toons[indexPath.row].id
-                toon = Toon(name: toonName, id: toonId)
+            
+            if inSearchMode {
                 
+                if indexPath.row  < filteredToons.count {
+                    let toonName = filteredToons[indexPath.row].name
+                    let toonId = filteredToons[indexPath.row].id
+                    toon = Toon(name: toonName, id: toonId)
+                    
+                }
+            } else {
+                
+                if indexPath.row  < Toons.count {
+                    let toonName = Toons[indexPath.row].name
+                    let toonId = Toons[indexPath.row].id
+                    toon = Toon(name: toonName, id: toonId)
+                    
+                }
             }
             
             cell.configureCell(toon: toon)
@@ -125,11 +125,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        var toon = defaultToon
+        
+        if inSearchMode {
+            toon = filteredToons[indexPath.row]
+        } else {
+            toon = Toons[indexPath.row]
+        }
+        
+        performSegue(withIdentifier: "ToonDetailVC", sender: toon)
+        
+        
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 22
+        if inSearchMode {
+        
+            return filteredToons.count
+        }
+        
+        return Toons.count
+
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -141,5 +158,36 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return CGSize(width: 100, height: 132)
         
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            view.endEditing(true)
+            inSearchMode = false
+            collection.reloadData()
+        } else {
+            inSearchMode = true
+            let lower = searchBar.text!.lowercased()
+
+            filteredToons = Toons.filter({$0.name.range(of: lower, options: .caseInsensitive) != nil})
+            collection.reloadData()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToonDetailVC" {
+            if let detailsVC = segue.destination as? ToonDetailVC {
+                if let toon = sender as? Toon {
+                    detailsVC.toon = toon
+                }
+            }
+        }
+    }
+    
+    
+
 }
 
