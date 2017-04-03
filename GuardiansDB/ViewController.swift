@@ -32,7 +32,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
 
     func fetchAPIData() {
-        let url = URL(string: "https://gateway.marvel.com:443/v1/public/characters?series=16410%2C%204885&&orderBy=-modified&limit=50&ts=1&apikey=67366473d332c7638e072fd713d6c78d&hash=fc0fc0d5738fb7e45d0c9765950abdaf")!
+        let url = URL(string: "https://gateway.marvel.com:443/v1/public/characters?series=16410%2C%18212%2C19019%2C%204885&&orderBy=-modified&limit=50&ts=1&apikey=67366473d332c7638e072fd713d6c78d&hash=fc0fc0d5738fb7e45d0c9765950abdaf")!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 print(error as Any)
@@ -53,7 +53,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                                     let name = results[index]["name"] as! String!
 
                                     let newToon = Toon(name: name!, id: id!)
-
+                                    print(newToon.name, String(newToon.id))
                                     if let comics = results[index]["comics"] as! NSDictionary? {
                                         if let items = comics["items"] as! [NSDictionary]? {
                                             
@@ -63,11 +63,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                                             }
                                         }
                                     }
-                                    //print(newToon.name)
-                                    //print(newToon.id)
-                                    //print(newToon.stories)
+
                                     tempToons.append(newToon)
-                                    
                                 }
                             }
                         }
