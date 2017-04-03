@@ -63,9 +63,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                                             }
                                         }
                                     }
-                                    print(newToon.name)
-                                    print(newToon.id)
-                                    print(newToon.stories)
+                                    //print(newToon.name)
+                                    //print(newToon.id)
+                                    //print(newToon.stories)
                                     tempToons.append(newToon)
                                     
                                 }
@@ -155,7 +155,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 100, height: 132)
+        return CGSize(width: 100, height: 133)
         
     }
     
