@@ -16,6 +16,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var defaultToon = Toon(name: "Iron Man", id: 1009386)
     var inSearchMode = false
     var filteredToons: [Toon] = []
+    var postHash = "?&ts=1&apikey=67366473d332c7638e072fd713d6c78d&hash=fc0fc0d5738fb7e45d0c9765950abdaf"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +89,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ToonCell", for: indexPath) as? ToonCollectionViewCell {
-            print(indexPath.row)
             
             var toon = defaultToon
             

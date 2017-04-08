@@ -17,6 +17,7 @@
 		CEB93EB31E90628300681E33 /* ToonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB93EB21E90628300681E33 /* ToonCollectionViewCell.swift */; };
 		CEB93EB51E9182C200681E33 /* Guardians.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEB93EB41E9182C200681E33 /* Guardians.ttf */; };
 		CEB93EB81E919BF300681E33 /* ToonDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB93EB71E919BF300681E33 /* ToonDetailVC.swift */; };
+		CEB93EBA1E9859F400681E33 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB93EB91E9859F400681E33 /* Comic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		CEB93EB21E90628300681E33 /* ToonCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToonCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEB93EB41E9182C200681E33 /* Guardians.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Guardians.ttf; sourceTree = "<group>"; };
 		CEB93EB71E919BF300681E33 /* ToonDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToonDetailVC.swift; sourceTree = "<group>"; };
+		CEB93EB91E9859F400681E33 /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				CEB93EAF1E9003B600681E33 /* Toon.swift */,
+				CEB93EB91E9859F400681E33 /* Comic.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			files = (
 				CEB93E9C1E8FFDB100681E33 /* ViewController.swift in Sources */,
 				CEB93EB81E919BF300681E33 /* ToonDetailVC.swift in Sources */,
+				CEB93EBA1E9859F400681E33 /* Comic.swift in Sources */,
 				CEB93EB01E9003B600681E33 /* Toon.swift in Sources */,
 				CEB93EA21E8FFDB100681E33 /* GuardiansDB.xcdatamodeld in Sources */,
 				CEB93E9A1E8FFDB100681E33 /* AppDelegate.swift in Sources */,
@@ -346,6 +350,7 @@
 				CEB93EAD1E8FFDB100681E33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
