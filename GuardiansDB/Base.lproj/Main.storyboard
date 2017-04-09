@@ -352,9 +352,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="32" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tex-Hk-Iwz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="32" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tex-Hk-Iwz">
                                 <rect key="frame" x="16" y="217" width="333" height="416"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.95006924869999998" green="0.75406616930000003" blue="0.23555433749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="32" id="m2o-Br-FYJ">
@@ -379,13 +378,17 @@
                             <constraint firstItem="Ja1-US-YMq" firstAttribute="leading" secondItem="OE9-oi-wmc" secondAttribute="leadingMargin" id="5Gz-Ph-2vL"/>
                             <constraint firstItem="70b-td-3XC" firstAttribute="top" secondItem="3bg-Ra-lac" secondAttribute="bottom" constant="8" id="EmW-eO-W95"/>
                             <constraint firstItem="3bg-Ra-lac" firstAttribute="leading" secondItem="OE9-oi-wmc" secondAttribute="leadingMargin" id="FLm-ci-piP"/>
+                            <constraint firstItem="Ja1-US-YMq" firstAttribute="top" secondItem="Tex-Hk-Iwz" secondAttribute="bottom" constant="8" id="HVN-Ap-YpU"/>
                             <constraint firstItem="jtd-aa-iQJ" firstAttribute="top" secondItem="Ja1-US-YMq" secondAttribute="bottom" constant="5" id="LaR-IC-EfJ"/>
                             <constraint firstItem="3bg-Ra-lac" firstAttribute="top" secondItem="BDN-Xw-xdj" secondAttribute="bottom" constant="8" id="UnE-DF-WbG"/>
                             <constraint firstItem="hHb-pP-bwb" firstAttribute="top" secondItem="BDN-Xw-xdj" secondAttribute="bottom" constant="8" id="aMY-oa-Js1"/>
                             <constraint firstItem="BDN-Xw-xdj" firstAttribute="top" secondItem="OE9-oi-wmc" secondAttribute="top" id="bIO-0y-kfA"/>
+                            <constraint firstItem="Tex-Hk-Iwz" firstAttribute="top" secondItem="70b-td-3XC" secondAttribute="bottom" constant="8" symbolic="YES" id="gUW-2l-7H2"/>
                             <constraint firstItem="BDN-Xw-xdj" firstAttribute="leading" secondItem="OE9-oi-wmc" secondAttribute="leading" id="k4l-aK-d5F"/>
                             <constraint firstItem="hHb-pP-bwb" firstAttribute="leading" secondItem="3bg-Ra-lac" secondAttribute="trailing" constant="8" id="keV-HG-C97"/>
+                            <constraint firstItem="Tex-Hk-Iwz" firstAttribute="trailing" secondItem="Ja1-US-YMq" secondAttribute="trailing" id="qha-PG-Hox"/>
                             <constraint firstAttribute="trailing" secondItem="BDN-Xw-xdj" secondAttribute="trailing" id="tlc-Ri-Zbn"/>
+                            <constraint firstItem="Tex-Hk-Iwz" firstAttribute="leading" secondItem="Ja1-US-YMq" secondAttribute="leading" id="uKd-J5-uNv"/>
                             <constraint firstItem="hHb-pP-bwb" firstAttribute="trailing" secondItem="OE9-oi-wmc" secondAttribute="trailingMargin" id="wwi-rV-Qlm"/>
                         </constraints>
                     </view>

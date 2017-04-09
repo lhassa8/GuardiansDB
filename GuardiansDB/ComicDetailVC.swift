@@ -58,20 +58,21 @@ class ComicDetailVC: UIViewController {
     
     @IBAction func returnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        if webView.canGoBack == true {
-            webView.goBack()
-        }
+
     }
 
     @IBAction func goBackPressed(_ sender: Any) {
-
-        if webView.canGoForward == true {
-            webView.goForward()
+        if webView.canGoBack == true {
+            webView.goBack()
         }
+
     }
     
     
     @IBAction func goForwardPressed(_ sender: Any) {
+        if webView.canGoForward == true {
+            webView.goForward()
+        }
     }
     // MARK: - JSON
 
