@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SafariServices
 
 class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -65,7 +66,12 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "ShowComicDetail", sender: comics[indexPath.row]);
+        print(comics[indexPath.row].purchaseURL)
+        if let url = URL(string: comics[indexPath.row].purchaseURL) {
+            let svc = SFSafariViewController(url: url)
+            present(svc, animated: true, completion: nil)
+        }
+        //self.performSegue(withIdentifier: "ShowComicDetail", sender: comics[indexPath.row]);
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -76,7 +82,7 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             // Get the selected cell
             if let selectedComic = sender as? Comic {
                 print(selectedComic.comicUrl)
-                comicDetailVC.comicURLString = URL(string: selectedComic.purchaseURL!)
+                comicDetailVC.comicURLString = URL(string: selectedComic.purchaseURL)
             }
             
         }
@@ -175,24 +181,25 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
                                 for i in 0...results.count-1 {
                                     if let comicID = results[i]["id"] as? Int {
                                         if let comicTitle = results[i]["title"] as? String {
-                                            let comic = Comic(title: comicTitle, id: comicID)
-                                            comic.Desc = results[i]["description"] as? String ?? "No Description Avail"
+                                            var purchaseURL = "https://marvel.com/comics/unlimited"
                                             if let urls = results[i]["urls"] as? [NSDictionary] {
                                                 //print(urls)
                                                 for i in 0...urls.count-1 {
                                                     //print(urls[i]["type"])
                                                     if String(describing: urls[i]["type"]!) == "purchase" {
                                                         if let purchURL = urls[i]["url"] as? String {
-                                                            comic.purchaseURL = purchURL
+                                                            purchaseURL = purchURL
                                                         }
-                                                        
                                                     }
                                                 }
                                                 //print(urls)
                                             }
+                                            let comic = Comic(title: comicTitle, id: comicID, purchaseURL: purchaseURL)
+                                            comic.Desc = results[i]["description"] as? String ?? "No Description Avail"
                                             
                                             //print(comic.title, comic.comicUrl)
                                             fetchedComics.append(comic)
+
                                             
                                         }
                                     }

@@ -13,7 +13,7 @@ class Comic {
     private var _id: Int!
     private var _title: String!
     var Desc: String?
-    var purchaseURL: String?
+    private var _purchaseURL: String!
     
     var title: String {
         return _title
@@ -22,10 +22,14 @@ class Comic {
     var id: Int {
         return _id
     }
+    var purchaseURL: String {
+        return _purchaseURL
+    }
     
-    init(title: String, id: Int) {
+    init(title: String, id: Int, purchaseURL: String) {
         self._title = title
         self._id = id
+        self._purchaseURL = purchaseURL
     }
     
     var comicUrl: URL {
