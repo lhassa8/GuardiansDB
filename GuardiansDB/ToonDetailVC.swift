@@ -39,6 +39,12 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         var url = toon.toonUrl
         //let url = URL(string: initialUrl! + String(toon.id) + postUrl!)
 
+        // test spinner
+        let x = (self.table.contentSize.width / 2) - 25
+        let spinner:SpinnerView = SpinnerView(frame: CGRect(x: x, y: 250, width: 50, height: 50))
+        spinner.tag = 100
+        self.view.addSubview(spinner)
+        
         fetchAPIData(url: url)
         url = toon.comicUrl
         fetchComicsData(url: url)
@@ -92,6 +98,12 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func wikiBtnPressed(_ sender: Any) {
+        if let url = URL(string: toon.wikiURL) {
+            let svc = SFSafariViewController(url: url)
+            present(svc, animated: true, completion: nil)
+        }
+    }
     
     // MARK: - JSON
 
@@ -142,7 +154,7 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
                             //let request = URLRequest(url: outputURL!)
                             //self.webView.loadRequest(request)
                             if outputDesc == "" {
-                                outputDesc = "Description not available"
+                                outputDesc = "Description not available.  Tap character image to see full wiki page."
                             }
                             self.toonDescriptionLbl.text = outputDesc 
                             //return outputURL
@@ -234,6 +246,13 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
                             self.comics = fetchedComics
                             //print(self.comics.count)
                             //print(self.comics[0].title)
+                            if let viewWithTag = self.view.viewWithTag(100) {
+                                print("Tag 100 found")
+                                viewWithTag.removeFromSuperview()
+                            }
+                            else {
+                                print("tag not found")
+                            }
                             self.table.reloadData()
                         })
                         

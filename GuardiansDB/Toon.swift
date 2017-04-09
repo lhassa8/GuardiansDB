@@ -11,6 +11,7 @@ import Foundation
 class Toon {
     private var _name: String!
     private var _id: Int!
+    var wikiURL = String()
     var stories = [String]()
     
     var name: String {

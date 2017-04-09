@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate  {
 
     @IBOutlet weak var collection: UICollectionView!
@@ -29,11 +30,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         searchBar.returnKeyType = .done  
         fetchAPIData()
         
+
+        
     }
 
 
     func fetchAPIData() {
-        let url = URL(string: "https://gateway.marvel.com:443/v1/public/characters?series=16410%2C%18212%2C19019%2C%204885&&orderBy=-modified&limit=50&ts=1&apikey=67366473d332c7638e072fd713d6c78d&hash=fc0fc0d5738fb7e45d0c9765950abdaf")!
+        let url = URL(string: "https://gateway.marvel.com:443/v1/public/characters?series=16410%2C%22922%2C%18212%2C%19019%2C%204885&&orderBy=-modified&limit=50&ts=1&apikey=67366473d332c7638e072fd713d6c78d&hash=fc0fc0d5738fb7e45d0c9765950abdaf")!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 print(error as Any)
@@ -64,7 +67,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                                             }
                                         }
                                     }
-
+                                    var wikiURL = "http://marvel.com/universe/Main_Page"
+                                    if let urls = results[index]["urls"] as? [NSDictionary] {
+                                        //print(urls)
+                                        for i in 0...urls.count-1 {
+                                            //print(urls[i]["type"])
+                                            if String(describing: urls[i]["type"]!) == "wiki" {
+                                                if let tempURL = urls[i]["url"] as? String {
+                                                    wikiURL = tempURL
+                                                }
+                                            }
+                                        }
+                                        //print(urls)
+                                    }
+                                    newToon.wikiURL = wikiURL
+                                    print(wikiURL)
                                     tempToons.append(newToon)
                                 }
                             }
@@ -184,6 +201,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    @IBAction func infoPressed(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "All Marvel Characters From:", message: "Guardians of the Galaxy (1990-1994), (2008 - 2010), (2013 - Present), (2014), and Awesome Mix Infinite Comic (2016-2017)", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
 
 }

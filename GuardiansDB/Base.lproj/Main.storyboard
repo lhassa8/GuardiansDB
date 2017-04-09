@@ -40,6 +40,15 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWB-pn-JqH">
+                                        <rect key="frame" x="8" y="15" width="36" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="💁🏼"/>
+                                        <connections>
+                                            <action selector="infoPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fkt-kJ-ehV"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95288842916488647" green="0.039932660758495331" blue="0.04143068939447403" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -329,10 +338,22 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3bg-Ra-lac" userLabel="Image">
                                 <rect key="frame" x="16" y="63" width="110" height="110"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="110" id="6JQ-N1-qut"/>
                                     <constraint firstAttribute="height" constant="110" id="8A8-0d-KKl"/>
                                     <constraint firstAttribute="width" constant="110" id="Jmc-fi-pgP"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="bYI-FT-6c2"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWL-7q-buz">
+                                <rect key="frame" x="16" y="63" width="110" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="xvu-3a-I6c"/>
+                                    <constraint firstAttribute="height" constant="110" id="zpn-NU-QvU"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="wikiBtnPressed:" destination="lxF-jJ-JFT" eventType="touchUpInside" id="7R5-4w-Itm"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description not available" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="hHb-pP-bwb">
                                 <rect key="frame" x="134" y="63" width="225" height="110"/>
                                 <constraints>
@@ -376,9 +397,11 @@
                         <constraints>
                             <constraint firstItem="70b-td-3XC" firstAttribute="leading" secondItem="OE9-oi-wmc" secondAttribute="leadingMargin" id="2MN-DS-TCl"/>
                             <constraint firstItem="Ja1-US-YMq" firstAttribute="leading" secondItem="OE9-oi-wmc" secondAttribute="leadingMargin" id="5Gz-Ph-2vL"/>
+                            <constraint firstItem="NWL-7q-buz" firstAttribute="centerY" secondItem="3bg-Ra-lac" secondAttribute="centerY" id="9W7-C7-044"/>
                             <constraint firstItem="70b-td-3XC" firstAttribute="top" secondItem="3bg-Ra-lac" secondAttribute="bottom" constant="8" id="EmW-eO-W95"/>
                             <constraint firstItem="3bg-Ra-lac" firstAttribute="leading" secondItem="OE9-oi-wmc" secondAttribute="leadingMargin" id="FLm-ci-piP"/>
                             <constraint firstItem="Ja1-US-YMq" firstAttribute="top" secondItem="Tex-Hk-Iwz" secondAttribute="bottom" constant="8" id="HVN-Ap-YpU"/>
+                            <constraint firstItem="NWL-7q-buz" firstAttribute="centerX" secondItem="3bg-Ra-lac" secondAttribute="centerX" id="JWo-5s-235"/>
                             <constraint firstItem="jtd-aa-iQJ" firstAttribute="top" secondItem="Ja1-US-YMq" secondAttribute="bottom" constant="5" id="LaR-IC-EfJ"/>
                             <constraint firstItem="Tex-Hk-Iwz" firstAttribute="leading" secondItem="OE9-oi-wmc" secondAttribute="leadingMargin" id="M81-JH-Yol"/>
                             <constraint firstItem="3bg-Ra-lac" firstAttribute="top" secondItem="BDN-Xw-xdj" secondAttribute="bottom" constant="8" id="UnE-DF-WbG"/>
