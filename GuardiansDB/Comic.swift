@@ -13,6 +13,7 @@ class Comic {
     private var _id: Int!
     private var _title: String!
     var Desc: String?
+    var purchaseURL: String?
     
     var title: String {
         return _title

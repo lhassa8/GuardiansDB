@@ -149,10 +149,10 @@
             </objects>
             <point key="canvasLocation" x="192.80000000000001" y="91.304347826086968"/>
         </scene>
-        <!--View Controller-->
+        <!--Comic DetailVC-->
         <scene sceneID="QFc-sb-jbp">
             <objects>
-                <viewController id="9b9-Hc-GNE" sceneMemberID="viewController">
+                <viewController id="9b9-Hc-GNE" customClass="ComicDetailVC" customModule="GuardiansDB" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="byB-3t-VWK"/>
                         <viewControllerLayoutGuide type="bottom" id="9eQ-nM-45V"/>
@@ -185,7 +185,7 @@
                                             <color key="titleColor" red="0.98171073200000003" green="0.97826546430000005" blue="0.78952586650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="returnPressed:" destination="lxF-jJ-JFT" eventType="touchUpInside" id="K0e-S8-Ipb"/>
+                                            <action selector="returnPressed:" destination="9b9-Hc-GNE" eventType="touchUpInside" id="veR-Mt-qRb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -198,11 +198,9 @@
                                     <constraint firstAttribute="bottom" secondItem="L1j-a2-AwL" secondAttribute="bottom" constant="8" id="llV-jh-0c7"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data provided by Marvel. © 2017 MARVEL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuQ-le-2bO">
-                                <rect key="frame" x="21" y="638" width="333" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data provided by Marvel. © 2017 MARVEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuQ-le-2bO">
+                                <rect key="frame" x="46" y="638" width="283" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="333" id="1NB-PV-g5t"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="333" id="blp-9J-RYG"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="cfQ-KD-1GD"/>
                                     <constraint firstAttribute="height" constant="21" id="ihQ-n7-9VF"/>
                                 </constraints>
@@ -210,21 +208,62 @@
                                 <color key="textColor" red="0.12817516919999999" green="0.25908720489999998" blue="0.43307650089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLz-j1-paG">
+                                <rect key="frame" x="0.0" y="55" width="375" height="575"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lB-DP-1ys">
+                                <rect key="frame" x="8" y="633" width="30" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="Z6R-yc-zL7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <state key="normal" title="←">
+                                    <color key="titleColor" red="0.1990586221" green="0.00059285713360000001" blue="0.0060575874519999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBackPressed:" destination="9b9-Hc-GNE" eventType="touchUpInside" id="hUg-aW-I6x"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RoV-Uy-dsg">
+                                <rect key="frame" x="337" y="633" width="30" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="rde-0A-lGB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <state key="normal" title="→">
+                                    <color key="titleColor" red="0.1990586221" green="0.00059285713360000001" blue="0.0060575874519999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goForwardPressed:" destination="9b9-Hc-GNE" eventType="touchUpInside" id="bmF-pw-5BZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.95006924867630005" green="0.75406616926193237" blue="0.23555433750152588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="3lB-DP-1ys" firstAttribute="leading" secondItem="o47-Uc-bDc" secondAttribute="leading" constant="8" id="21I-Hg-zDn"/>
+                            <constraint firstItem="9eQ-nM-45V" firstAttribute="top" secondItem="3lB-DP-1ys" secondAttribute="bottom" constant="3" id="2Ou-v0-fcA"/>
+                            <constraint firstAttribute="trailing" secondItem="LLz-j1-paG" secondAttribute="trailing" id="3GI-rM-S9t"/>
+                            <constraint firstItem="LLz-j1-paG" firstAttribute="leading" secondItem="o47-Uc-bDc" secondAttribute="leading" id="3N2-VS-wyb"/>
+                            <constraint firstItem="fuQ-le-2bO" firstAttribute="top" secondItem="LLz-j1-paG" secondAttribute="bottom" constant="8" id="9E0-BJ-Q51"/>
                             <constraint firstItem="9eQ-nM-45V" firstAttribute="top" secondItem="fuQ-le-2bO" secondAttribute="bottom" constant="8" id="CgK-pz-KRm"/>
+                            <constraint firstItem="9eQ-nM-45V" firstAttribute="top" secondItem="RoV-Uy-dsg" secondAttribute="bottom" constant="3" id="FU2-5Q-aeO"/>
                             <constraint firstItem="cbl-m5-Vns" firstAttribute="leading" secondItem="o47-Uc-bDc" secondAttribute="leading" id="Flf-IZ-CeM"/>
+                            <constraint firstItem="LLz-j1-paG" firstAttribute="top" secondItem="cbl-m5-Vns" secondAttribute="bottom" id="Wuy-j1-Ine"/>
                             <constraint firstItem="cbl-m5-Vns" firstAttribute="top" secondItem="o47-Uc-bDc" secondAttribute="top" id="aWo-nt-fgS"/>
-                            <constraint firstItem="fuQ-le-2bO" firstAttribute="leading" secondItem="o47-Uc-bDc" secondAttribute="leadingMargin" constant="5" id="hbA-fV-sUe"/>
+                            <constraint firstAttribute="trailing" secondItem="RoV-Uy-dsg" secondAttribute="trailing" constant="8" id="hLf-BS-db2"/>
+                            <constraint firstItem="fuQ-le-2bO" firstAttribute="leading" secondItem="o47-Uc-bDc" secondAttribute="leadingMargin" constant="30" id="hbA-fV-sUe"/>
                             <constraint firstAttribute="trailing" secondItem="cbl-m5-Vns" secondAttribute="trailing" id="mFe-w5-mqD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fuQ-le-2bO" secondAttribute="trailing" constant="5" id="oeQ-wN-OUQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fuQ-le-2bO" secondAttribute="trailing" constant="30" id="oeQ-wN-OUQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="LLz-j1-paG" id="vWC-NX-Q4V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5G1-ku-aBL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1612" y="265"/>
+            <point key="canvasLocation" x="1808.8" y="90.404797601199405"/>
         </scene>
         <!--Toon DetailVC-->
         <scene sceneID="CnF-YT-tAB">
@@ -355,6 +394,7 @@
                         <outlet property="titleLbl" destination="Q7l-XS-u6u" id="n1Z-FJ-k84"/>
                         <outlet property="toonDescriptionLbl" destination="hHb-pP-bwb" id="FX3-Gs-wHc"/>
                         <outlet property="toonProfileImage" destination="3bg-Ra-lac" id="t32-n6-TpX"/>
+                        <segue destination="9b9-Hc-GNE" kind="show" identifier="ShowComicDetail" id="QNY-BB-DzK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xWh-7f-PQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
