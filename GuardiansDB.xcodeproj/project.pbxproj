@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE35D3711E9954130020BBD1 /* ComicDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35D3701E9954130020BBD1 /* ComicDetailVC.swift */; };
 		CE6ABC1C1E9A95AF00DC302B /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ABC1B1E9A95AF00DC302B /* SpinnerView.swift */; };
 		CEB93E9A1E8FFDB100681E33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB93E991E8FFDB100681E33 /* AppDelegate.swift */; };
 		CEB93E9C1E8FFDB100681E33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB93E9B1E8FFDB100681E33 /* ViewController.swift */; };
@@ -23,7 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE35D3701E9954130020BBD1 /* ComicDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicDetailVC.swift; sourceTree = "<group>"; };
 		CE6ABC1B1E9A95AF00DC302B /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		CEB93E961E8FFDB100681E33 /* GuardiansDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuardiansDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB93E991E8FFDB100681E33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,7 +105,6 @@
 			children = (
 				CEB93E9B1E8FFDB100681E33 /* ViewController.swift */,
 				CEB93EB71E919BF300681E33 /* ToonDetailVC.swift */,
-				CE35D3701E9954130020BBD1 /* ComicDetailVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -192,7 +189,6 @@
 				CEB93EBA1E9859F400681E33 /* Comic.swift in Sources */,
 				CEB93EB01E9003B600681E33 /* Toon.swift in Sources */,
 				CEB93EA21E8FFDB100681E33 /* GuardiansDB.xcdatamodeld in Sources */,
-				CE35D3711E9954130020BBD1 /* ComicDetailVC.swift in Sources */,
 				CEB93E9A1E8FFDB100681E33 /* AppDelegate.swift in Sources */,
 				CEB93EB31E90628300681E33 /* ToonCollectionViewCell.swift in Sources */,
 			);

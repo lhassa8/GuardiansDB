@@ -86,6 +86,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "GuardiansDB"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

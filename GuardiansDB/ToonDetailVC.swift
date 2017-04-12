@@ -17,6 +17,7 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     @IBOutlet weak var toonProfileImage: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var toonDescriptionLbl: UILabel!
+    @IBOutlet weak var wikiButton: UIButton!
     
     //default to Iron Man just in case of error
     var toon = Toon(name: "Iron Man", id: 1009386)
@@ -34,7 +35,7 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         toonProfileImage.layer.cornerRadius = 25
         toonProfileImage.image = UIImage(named: "\(self.toon.id)")
         self.table.backgroundColor = UIColor.clear
-
+        
     
         var url = toon.toonUrl
         //let url = URL(string: initialUrl! + String(toon.id) + postUrl!)
@@ -81,19 +82,7 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         //self.performSegue(withIdentifier: "ShowComicDetail", sender: comics[indexPath.row]);
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowComicDetail" {
-            
-            let comicDetailVC = segue.destination as! ComicDetailVC
-            
-            // Get the selected cell
-            if let selectedComic = sender as? Comic {
-                print(selectedComic.comicUrl)
-                comicDetailVC.comicURLString = URL(string: selectedComic.purchaseURL)
-            }
-            
-        }
-    }
+    
     
     @IBAction func returnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -112,8 +101,6 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     
     func fetchAPIData(url: URL) {
-        let request = URLRequest(url: url)
-        var outputURL = URL(string: "http://marvel.com")
         var outputDesc = String()
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -132,33 +119,16 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
                                 if let desc = results[0]["description"]! as? String {
                                     outputDesc = desc
                                 }
-                                var urlString = String()
-                                let urls = results[0]["urls"] as? NSArray!
-                                for i in 0...results.count {
-                                    let item = urls?[i] as? NSDictionary!
-                                    //print(item!)
-                                    if let urlType = item?["type"] as? String {
-                                        if urlType == "detail" {
-                                            urlString = item?["url"] as! String
-                                            //print(urlString)
-                                        }
-                                    }
-                                }
-                                outputURL = URL(string: urlString)!
-                                //print(outputURL!)
                             }
                         }
                         
                         DispatchQueue.main.sync(execute: {
-                            //self.Toons = tempToons
-                            //self.collection.reloadData()
-                            //let request = URLRequest(url: outputURL!)
-                            //self.webView.loadRequest(request)
+
                             if outputDesc == "" {
                                 outputDesc = "Description not available.  Tap character image to see full wiki page."
                             }
                             self.toonDescriptionLbl.text = outputDesc 
-                            //return outputURL
+
                         })
                         
                         
@@ -169,20 +139,17 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             }
         }
         task.resume()
-        //return outputURL
+
     }
     
     func fetchComicsData(url: URL) {
         var fetchedComics = [Comic]()
-        let request = URLRequest(url: url)
-        var outputURL = URL(string: "http://marvel.com")
+//        var outputURL = URL(string: "http://marvel.com")
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 print(error as Any)
             } else {
-                //var tempToons = [Toon]()
                 if let urlContent = data {
-                    //process JSON here
                     do {
                         
                         let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
@@ -190,63 +157,36 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
                         if let data = jsonResult["data"] as? NSDictionary! {
                             
                             if let results = data["results"] as? [NSDictionary]! {
-                                //print(results[0]["urls"]!)
                                 for i in 0...results.count-1 {
                                     if let comicID = results[i]["id"] as? Int {
                                         if let comicTitle = results[i]["title"] as? String {
                                             var purchaseURL = "https://marvel.com/comics/unlimited"
                                             if let urls = results[i]["urls"] as? [NSDictionary] {
-                                                //print(urls)
                                                 for i in 0...urls.count-1 {
-                                                    //print(urls[i]["type"])
                                                     if String(describing: urls[i]["type"]!) == "purchase" {
                                                         if let purchURL = urls[i]["url"] as? String {
                                                             purchaseURL = purchURL
                                                         }
                                                     }
                                                 }
-                                                //print(urls)
                                             }
                                             let comic = Comic(title: comicTitle, id: comicID, purchaseURL: purchaseURL)
                                             comic.Desc = results[i]["description"] as? String ?? "No Description Avail"
                                             
-                                            //print(comic.title, comic.comicUrl)
                                             fetchedComics.append(comic)
 
                                             
                                         }
                                     }
                                 }
-                                /*
-                                var urlString = String()
-                                let urls = results[0]["urls"] as? NSArray!
-                                for i in 0...results.count {
-                                    let item = urls?[i] as? NSDictionary!
-                                    print(item!)
-                                    if let urlType = item?["type"] as? String {
-                                        if urlType == "detail" {
-                                            urlString = item?["url"] as! String
-                                            print(urlString)
-                                        }
-                                    }
-                                }
-                                outputURL = URL(string: urlString)!
-                                print(outputURL!)
- */
-                            }
+                                                            }
                         }
                         
                         DispatchQueue.main.sync(execute: {
-                            //self.Toons = tempToons
-                            //self.collection.reloadData()
-                            //let request = URLRequest(url: outputURL!)
-                            //self.webView.loadRequest(request)
-                            //return outputURL
                             
                             fetchedComics.sort()
                             self.comics = fetchedComics
-                            //print(self.comics.count)
-                            //print(self.comics[0].title)
+                            
                             if let viewWithTag = self.view.viewWithTag(100) {
                                 print("Tag 100 found")
                                 viewWithTag.removeFromSuperview()
