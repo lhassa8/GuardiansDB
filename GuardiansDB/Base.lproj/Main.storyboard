@@ -36,23 +36,24 @@
                                             <constraint firstAttribute="height" constant="21" id="7Sh-Q2-BWq"/>
                                             <constraint firstAttribute="width" constant="270" id="Nj3-TI-UEB"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Guardians" family="Guardians" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="Guardians" family="Guardians" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWB-pn-JqH">
-                                        <rect key="frame" x="8" y="15" width="36" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWB-pn-JqH">
+                                        <rect key="frame" x="8" y="13" width="30" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="💁🏼"/>
                                         <connections>
                                             <action selector="infoPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fkt-kJ-ehV"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.95288842916488647" green="0.039932660758495331" blue="0.04143068939447403" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.95294117647058818" green="0.039215686274509803" blue="0.043137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="pWB-pn-JqH" firstAttribute="leading" secondItem="lyK-zU-iz0" secondAttribute="leading" constant="8" id="Ghv-kx-A2V"/>
                                     <constraint firstAttribute="height" constant="55" id="Vx6-g6-1FM"/>
+                                    <constraint firstAttribute="bottom" secondItem="pWB-pn-JqH" secondAttribute="bottom" id="fhh-Ta-tFG"/>
                                     <constraint firstItem="XLq-AU-Xhe" firstAttribute="centerX" secondItem="lyK-zU-iz0" secondAttribute="centerX" id="hiS-y0-1Pw"/>
                                     <constraint firstAttribute="bottom" secondItem="XLq-AU-Xhe" secondAttribute="bottom" constant="8" id="myB-kH-DQ5"/>
                                 </constraints>

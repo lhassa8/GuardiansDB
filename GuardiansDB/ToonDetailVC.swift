@@ -40,8 +40,9 @@ class ToonDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         //let url = URL(string: initialUrl! + String(toon.id) + postUrl!)
 
         // test spinner
-        let x = (self.table.contentSize.width / 2) - 25
-        let spinner:SpinnerView = SpinnerView(frame: CGRect(x: x, y: 250, width: 50, height: 50))
+        let x = (self.view.bounds.width / 2) - 25
+        let y = (self.view.bounds.height / 2) 
+        let spinner:SpinnerView = SpinnerView(frame: CGRect(x: x, y: y, width: 50, height: 50))
         spinner.tag = 100
         self.view.addSubview(spinner)
         

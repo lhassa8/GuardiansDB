@@ -40,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cover" width="444" height="895"/>
+        <image name="cover" width="1600" height="1600"/>
     </resources>
 </document>
